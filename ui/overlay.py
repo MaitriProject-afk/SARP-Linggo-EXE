@@ -456,7 +456,7 @@ class SettingsDialog(QDialog):
         cancel_btn.clicked.connect(self.reject)
 
         # Copyright & Credit label
-        credit_label = QLabel("SA-RP Linggo v1.3.0 • Developed by MaitriProject • Open Source (MIT)")
+        credit_label = QLabel("SA-RP Linggo v1.3.6 • Developed by MaitriProject • Open Source (MIT)")
         credit_label.setStyleSheet("color: #64748B; font-size: 10px; margin-top: 6px;")
         credit_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(credit_label)

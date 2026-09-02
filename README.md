@@ -1,52 +1,59 @@
 <div align="center">
 
-# 🎮 SA-RP Linggo
+# 🎮 SA-RP Linggo v1.3.6 (EXE Version)
 
-**Real-Time AI Translation Overlay for GTA SA-MP Roleplay**
+**Real-Time AI Translation & Slang Converter Overlay for GTA SA-MP Roleplay**
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![PyQt6](https://img.shields.io/badge/PyQt6-6.0+-41CD52?style=flat-square&logo=qt&logoColor=white)](https://riverbankcomputing.com/software/pyqt/)
-[![Groq API](https://img.shields.io/badge/Groq-llama--3.1--8b--instant-F55036?style=flat-square)](https://console.groq.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+[![Groq API](https://img.shields.io/badge/Groq-llama--3.3--70b--versatile-F55036?style=flat-square)](https://console.groq.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-100%25%20Free%20%26%20Open%20Source-blue.svg)](https://github.com/MaitriProject-afk/SARP-Linggo-EXE)
 
-*Terjemahkan chat GTA SA-MP secara real-time dengan AI — tanpa ganggu gameplay!*
+*Terjemahkan chat GTA SA-MP secara real-time dengan AI — 100% Bebas Lisensi & Lisensi Gratis!*
 
 </div>
 
 ---
 
-## ✨ Fitur Utama
+Mulai versi 1.3.0+, **SA-RP Linggo telah resmi menjadi proyek 100% Free & Open-Source (MIT License)** di bawah naungan **MaitriProject**. Seluruh sistem lisensi/token telah dihapus penuh — Anda cukup memasukkan Groq API Key milik sendiri (gratis) untuk langsung menggunakannya.
+
+---
+
+## ✨ Fitur Utama v1.3.6
 
 | Fitur | Deskripsi |
 |---|---|
-| 🔍 **Inbound Translation** | Menerjemahkan chat pemain lain (SAYS, /me, /do) ke Bahasa Indonesia secara otomatis |
-| ⌨️ **Outbound Translation** | Ketik Bahasa Indonesia → `CTRL+C` → AI terjemahkan → `CTRL+V` langsung ke game |
-| 🧠 **Full-Sentence AI Reasoning** | Memahami konteks penuh kalimat, bukan terjemahan kata per kata |
-| 🎭 **Subculture Slang** | Mengerti slang American Hood, Cartel, Italian Mob, dll. |
-| 🎨 **Matte Slate UI** | Overlay transparan bergaya gelap dengan ikon SVG profesional |
-| 🔒 **Click-Through Mode** | Overlay tidak menghalangi klik mouse saat bermain |
-| ⚡ **Anti-Loop Protection** | Tidak akan memangil API berulang untuk teks yang sama |
+| 🔍 **Inbound Live Chat Translator** | Menerjemahkan chat pemain lain (SAYS, /me, /do) ke Bahasa Indonesia secara otomatis dari `chatlog.txt` |
+| ⌨️ **Outbound Auto-Translate** | Ketik Bahasa Indonesia → `CTRL+C` → AI terjemahkan → `CTRL+V` langsung ke game |
+| 🇺🇸 **American Hood & Ghetto Slang Mode** | Pilihan terjemahan gaya bahasa jalanan Amerika (AAVE / Gangster Slang) |
+| 🧠 **Full-Sentence AI Reasoning** | Memahami konteks penuh kalimat, bukan sekadar terjemahan kata per kata |
+| 🔑 **Rolling Groq Token Pool** | Mendukung multiple API Key Groq dengan rotasi otomatis saat rate limit hit |
+| 🔓 **100% License-Free** | Tanpa token lisensi Discord, tanpa HWID lock, tanpa pengumpulan data pribadi |
+| 🎨 **Matte Slate UI** | Overlay transparan bergaya gelap dengan font responsif dan ikon SVG profesional |
+| 🔒 **Click-Through Mode** | Overlay tidak menghalangi klik mouse saat bermain game |
+| ⚡ **Anti-Loop Protection** | Tidak akan memanggil API berulang untuk teks yang sama |
 
 ---
 
 ## 📋 Prasyarat
 
-- **Python 3.11+**
+- **Windows 10 / 11 (64-bit)**
 - **GTA San Andreas** + **SA-MP (0.3.7 / SAMP-RP)**
-- **[Groq API Key](https://console.groq.com)** (Gratis — 14.400 request/hari)
+- **[Groq API Key](https://console.groq.com)** (Gratis — Pembuatan instant tanpa kartu kredit)
 
 ---
 
 ## 🚀 Instalasi & Cara Pakai
 
-### Option 1: Download `.exe` Standalone (Untuk Pemain — Tanpa Python!)
+### Option 1: Download `.exe` Standalone (Untuk Pemain — Tanpa Instalasi Python!)
 
 1. **Download Aplikasi**:
-   Buka halaman [Releases](https://github.com/YOUR_USERNAME/sa-rp-linggo/releases) di GitHub dan download `SA-RP Linggo.exe`.
+   Buka halaman **[Releases](https://github.com/MaitriProject-afk/SARP-Linggo-EXE/releases)** di GitHub dan download `SA-RP Linggo.exe`.
 2. **Jalankan Aplikasi**:
    Double click `SA-RP Linggo.exe`.
 3. **Setting Groq API Key**:
-   Buka tombol **Settings ⚙️** pada overlay, lalu masukkan **Groq API Key** kamu. (Gratis di [console.groq.com](https://console.groq.com)).
+   Buka tombol **Settings ⚙️** pada overlay, lalu masukkan **Groq API Key** Anda (Gratis di [console.groq.com](https://console.groq.com)).
 4. **Selesai!** Aplikasi siap digunakan saat bermain SA-MP.
 
 ---
@@ -55,24 +62,20 @@
 
 ```bash
 # 1. Clone Repository
-git clone https://github.com/YOUR_USERNAME/sa-rp-linggo.git
-cd sa-rp-linggo
+git clone https://github.com/MaitriProject-afk/SARP-Linggo-EXE.git
+cd SARP-Linggo-EXE
 
 # 2. Install Dependencies
 pip install -r requirements.txt
 
-# 3. Setup Config
-copy config.example.json config.json
-
-# 4. Jalankan Aplikasi
+# 3. Jalankan Aplikasi
 python main.py
 ```
 
 ### 🛠️ Build Executable Sendiri (.exe)
 Jika ingin mengompilasi `.exe` sendiri dari source:
 ```bash
-# Cukup jalankan batch file build
-build.bat
+python -m PyInstaller --noconfirm --onefile --windowed --name "SA-RP Linggo" main.py
 ```
 Hasil `.exe` akan berada di folder `dist\SA-RP Linggo.exe`.
 
@@ -81,83 +84,23 @@ Hasil `.exe` akan berada di folder `dist\SA-RP Linggo.exe`.
 ## 🎮 Cara Penggunaan
 
 ### Inbound (Terjemahan Chat Orang Lain)
-Overlay akan otomatis mendeteksi chat bahasa asing dan menerjemahkannya ke Bahasa Indonesia. Tidak perlu melakukan apa-apa!
+Overlay akan otomatis mendeteksi chat bahasa asing di `chatlog.txt` dan menerjemahkannya ke Bahasa Indonesia.
 
 ### Outbound (Kamu Mau Bicara Bahasa Inggris)
 1. Aktifkan fitur di **Settings → Enable Outbound Translation** ✅
 2. Ketik kalimat Bahasa Indonesia di chatbox SAMP
 3. Tekan `CTRL+A` → `CTRL+C`
-4. SA-RP Linggo menerjemahkan otomatis
-5. Tekan `CTRL+V` → `ENTER` — kirim!
+4. SA-RP Linggo menerjemahkan otomatis ke clipboard
+5. Tekan `CTRL+V` → `ENTER` untuk mengirim chat ke game!
 
 **Style Tersedia:**
 - 💼 `Standard English` — Bahasa Inggris baku dan jelas *(default)*
 - 🇺🇸 `American Hood` — Street gangster slang authentic
 
-### Perintah RP Khusus
-| Perintah | Perlakuan |
-|---|---|
-| `/me membuka pintu mobil` | `/me opens the car door` (3rd person action) |
-| `/do apakah ada yang melihat?` | `/do Is anyone watching?` (environment state) |
-| `teks biasa` | Dialog percakapan sesuai style |
-
 ---
 
-## ⚙️ Konfigurasi
+## 📄 Lisensi & Attribution
 
-| Key | Default | Keterangan |
-|---|---|---|
-| `groq_api_key` | `""` | API key dari console.groq.com |
-| `groq_model` | `llama-3.3-70b-versatile` | Model AI yang digunakan |
-| `chatlog_path` | *(kosong)* | Path ke chatlog.txt SAMP |
-| `outbound_style` | `Standard English` | Style bahasa outbound |
-| `enable_clipboard_outbound` | `true` | Aktif/nonaktif fitur outbound |
-| `opacity` | `0.9` | Transparansi overlay (0.1–1.0) |
-| `font_size` | `11` | Ukuran font overlay |
-| `max_feed_items` | `50` | Maks item di feed overlay |
+Didistribusikan di bawah **[MIT License](LICENSE)** - 100% Free & Open Source.
 
----
-
-## 🏗️ Struktur Project
-
-```
-sa-rp-linggo/
-├── main.py                  # Entry point aplikasi
-├── requirements.txt         # Python dependencies
-├── config.example.json      # Template konfigurasi
-│
-├── core/
-│   ├── translator.py        # AI Translation Engine (Groq API)
-│   ├── chat_listener.py     # Chatlog file watcher
-│   ├── clipboard_listener.py # Outbound clipboard handler
-│   └── config.py            # Config manager
-│
-└── ui/
-    ├── overlay.py           # Main overlay window & settings
-    ├── styles.py            # CSS stylesheet
-    └── icons.py             # SVG icon definitions
-```
-
----
-
-## 🤝 Kontribusi
-
-Pull Request sangat disambut! Untuk perubahan besar, buka Issue terlebih dahulu.
-
-1. Fork repository ini
-2. Buat branch fitur: `git checkout -b feature/NamaFitur`
-3. Commit: `git commit -m 'Add: NamaFitur'`
-4. Push: `git push origin feature/NamaFitur`
-5. Buat Pull Request
-
----
-
-## 📄 Lisensi
-
-Didistribusikan di bawah **MIT License**. Lihat [LICENSE](LICENSE) untuk informasi lebih lanjut.
-
----
-
-<div align="center">
-  Made with ❤️ for the SA-MP Roleplay Community
-</div>
+Dikembangkan & Dipelihara oleh **[MaitriProject](https://github.com/MaitriProject-afk)** untuk mendukung komunitas Roleplay GTA SA-MP Indonesia.
