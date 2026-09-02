@@ -1,0 +1,22 @@
+{
+    "groq_api_key": "",
+    "chatlog_path": "C:\\Users\\YourUsername\\Documents\\GTA San Andreas User Files\\SAMP\\chatlog.txt",
+    "target_language": "Indonesian",
+    "groq_model": "openai/gpt-oss-20b",
+    "outbound_style": "Standard English",
+    "enable_clipboard_outbound": true,
+    "enable_voice_input": true,
+    "voice_hotkey": "f4",
+    "toggle_visibility_hotkey": "f7",
+    "font_size": 11,
+    "opacity": 0.9,
+    "always_on_top": true,
+    "click_through": false,
+    "auto_translate_ic": true,
+    "auto_translate_me_do": true,
+    "max_feed_items": 50,
+    "overlay_x": 1300,
+    "overlay_y": 71,
+    "overlay_width": 455,
+    "overlay_height": 320
+}

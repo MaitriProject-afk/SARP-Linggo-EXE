@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env
+
+# Config file (contains API key & local paths - DO NOT commit)
+config.json
+
+# Test scripts (dev only)
+test_*.py
+
+# PyInstaller build output
+build/
+dist/
+*.spec
+*.exe
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# ASI Subfolder Repository
+SA-RP Linggo ASI/
