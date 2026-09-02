@@ -406,13 +406,12 @@ class SettingsDialog(QDialog):
         trans_toggle_vbox.addLayout(outbound_row)
         layout.addLayout(trans_toggle_vbox)
 
-        # 6. Offline License Token Settings
+        # 6. Open Source Build Info Section
         lic_vbox = QVBoxLayout()
         lic_vbox.setSpacing(6)
         
         lic_title_row = QHBoxLayout()
-        lic_title = QLabel("🔑 <b>Offline License Token:</b>")
-        lic_title.setStyleSheet("color: #F59E0B;")
+        lic_title = QLabel("🔓 <b>Status Aplikasi:</b> <span style='color: #22C55E; font-weight: bold;'>100% FREE & OPEN-SOURCE BUILD</span>")
         lic_title_row.addWidget(lic_title)
         lic_title_row.addStretch()
         
@@ -420,33 +419,12 @@ class SettingsDialog(QDialog):
         self.license_manager = LicenseManager()
         self.current_hwid = self.license_manager.get_local_hwid()
         
-        hwid_label = QLabel(f"Device HWID: <b style='color: #38BDF8;'>{self.current_hwid}</b>")
-        copy_hwid_btn = QPushButton("Copy HWID")
-        copy_hwid_btn.setStyleSheet("background-color: #334155; color: #F8FAFC; font-size: 11px; padding: 2px 8px; border-radius: 4px;")
-        copy_hwid_btn.clicked.connect(self.copy_hwid_to_clipboard)
-        
-        lic_title_row.addWidget(hwid_label)
-        lic_title_row.addWidget(copy_hwid_btn)
         lic_vbox.addLayout(lic_title_row)
 
-        info = self.license_manager.get_license_info()
-        status_text = f"<b style='color: #22C55E;'>ACTIVE</b> ({info.get('remaining_days', 0)} Days Remaining)" if info.get("active") else "<b style='color: #EF4444;'>EXPIRED / UNLICENSED</b>"
-        
-        self.license_status_label = QLabel(f"Status: {status_text}")
+        self.license_status_label = QLabel("Mod ini <b>100% Gratis dan Bebas Digunakan</b> tanpa perlu aktivasi lisensi. Masukkan Groq API Key milik Anda sendiri untuk langsung menggunakannya.")
+        self.license_status_label.setStyleSheet("color: #94A3B8; font-size: 11px;")
+        self.license_status_label.setWordWrap(True)
         lic_vbox.addWidget(self.license_status_label)
-
-        lic_input_row = QHBoxLayout()
-        self.token_input = QLineEdit()
-        self.token_input.setPlaceholderText("Paste License Token Here (e.g., SARP-001E-AB43-...)")
-        self.token_input.setStyleSheet("padding: 6px; border: 1px solid #373C47; border-radius: 4px; background-color: #1E222D; color: #FFFFFF;")
-        
-        activate_btn = QPushButton("Activate Token")
-        activate_btn.setStyleSheet("background-color: #10B981; color: #FFFFFF; font-weight: bold; padding: 6px 12px; border-radius: 4px;")
-        activate_btn.clicked.connect(self.activate_license_token)
-        
-        lic_input_row.addWidget(self.token_input)
-        lic_input_row.addWidget(activate_btn)
-        lic_vbox.addLayout(lic_input_row)
 
         layout.addLayout(lic_vbox)
 
@@ -478,7 +456,7 @@ class SettingsDialog(QDialog):
         cancel_btn.clicked.connect(self.reject)
 
         # Copyright & Credit label
-        credit_label = QLabel("SA-RP Linggo v1.3.0 • Created by yambuttt • Open Source (MIT)")
+        credit_label = QLabel("SA-RP Linggo v1.3.0 • Developed by MaitriProject • Open Source (MIT)")
         credit_label.setStyleSheet("color: #64748B; font-size: 10px; margin-top: 6px;")
         credit_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(credit_label)

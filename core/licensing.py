@@ -94,35 +94,14 @@ class LicenseManager:
             return False, f"Failed to save license file: {str(e)}"
 
     def get_license_info(self):
-        if not os.path.exists(self.storage_file):
-            return {"active": False, "reason": "No license found"}
-        
-        try:
-            with open(self.storage_file, "r") as f:
-                data = json.load(f)
-
-            expires_at = datetime.fromisoformat(data.get("expires_at"))
-            now = datetime.now()
-            
-            if now > expires_at:
-                return {"active": False, "reason": "License expired"}
-                
-            token_hwid = data.get("hwid", "")
-            current_hwid = self.get_local_hwid()
-            if token_hwid != current_hwid:
-                return {"active": False, "reason": f"HWID mismatch (Locked to {token_hwid})"}
-
-            remaining_days = (expires_at - now).days
-            return {
-                "active": True,
-                "expires_at": expires_at.strftime("%Y-%m-%d %H:%M:%S"),
-                "remaining_days": remaining_days,
-                "token": data.get("token"),
-                "hwid": token_hwid
-            }
-        except Exception as e:
-            return {"active": False, "reason": f"Corrupted license file: {str(e)}"}
+        return {
+            "active": True,
+            "expires_at": "PERPETUAL",
+            "remaining_days": 99999,
+            "token": "SARP-FREE-OPENSOURCE-BUILD",
+            "hwid": "UNLOCKED",
+            "reason": "100% Free & Open-Source Build"
+        }
 
     def is_active(self):
-        info = self.get_license_info()
-        return info.get("active", False)
+        return True
