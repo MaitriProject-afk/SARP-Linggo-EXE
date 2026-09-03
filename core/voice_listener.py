@@ -141,6 +141,13 @@ class VoiceListener(QThread):
             self.status_changed.emit("⚠️ Hold hotkey longer to talk", "#F59E0B")
             return
 
+        # Check Audio Peak Amplitude & RMS to detect silent mic / muted mic
+        max_amp = np.max(np.abs(audio_data))
+        rms = np.sqrt(np.mean(audio_data.astype(np.float32)**2))
+        if max_amp < 250 or rms < 40.0:
+            self.status_changed.emit("⚠️ Mic Silent / Muted (Cek Volume Mic Windows)", "#F59E0B")
+            return
+
         # Convert numpy frames to in-memory WAV byte buffer
         wav_buffer = io.BytesIO()
         with wave.open(wav_buffer, 'wb') as wf:
