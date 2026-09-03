@@ -171,14 +171,20 @@ class VoiceListener(QThread):
             # Normalize all phonetic misinterpretations by Whisper (e.g. Persesmi, Selesmi, Slashmi, Slasmi, Selasmi, me, slash do, do, pasar -> dasar)
             import re
             def clean_rp_action(text):
-                # Fix common leading speech misheard words
+                if not text:
+                    return text
+                # 1. Strip leading Whisper hallucinated prefix words (Pertama, Terima, Kamera, Satu, Tes, Test, etc.)
+                text = re.sub(r'^(?:pertama(?:\s+pertama)?|terima|kamera|satu|tes|test|halo|hello)[,\.\s]+', '', text, flags=re.IGNORECASE)
+                # 2. Strip leading whitespace and punctuation
+                text = re.sub(r'^[,\.\-\?!\s]+', '', text)
+                # 3. Fix common speech misheard words
                 text = re.sub(r'^(?:pasar|sar)\s+(mahluk|manusia|anjing|bangsat|tolol|bego)', r'dasar \1', text, flags=re.IGNORECASE)
                 text = re.sub(r'\bdiuntuk\b', 'diuntung', text, flags=re.IGNORECASE)
 
-                if re.match(r'^(?:[a-z]*(?:sdo|shdo)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*do|do)\b', text, re.IGNORECASE):
-                    return re.sub(r'^(?:[a-z]*(?:sdo|shdo)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*do|do)\b', '/do', text, flags=re.IGNORECASE)
-                if re.match(r'^(?:[a-z]*(?:smi|shmi|sme|shme)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*(?:mi|me)?|me)\b', text, re.IGNORECASE):
-                    return re.sub(r'^(?:[a-z]*(?:smi|shmi|sme|shme)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*(?:mi|me)?|me)\b', '/me', text, flags=re.IGNORECASE)
+                if re.search(r'^(?:[a-z]*(?:sdo|shdo)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*do|do)\b[,\.\s]*', text, re.IGNORECASE):
+                    return "/do " + re.sub(r'^(?:[a-z]*(?:sdo|shdo)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*do|do)\b[,\.\s]*', '', text, flags=re.IGNORECASE)
+                if re.search(r'^(?:[a-z]*(?:smi|shmi|sme|shme)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*(?:mi|me)?|me)\b[,\.\s]*', text, re.IGNORECASE):
+                    return "/me " + re.sub(r'^(?:[a-z]*(?:smi|shmi|sme|shme)|(?:slash|selas|seles|slas|sles|proses|perses|plas)\s*(?:mi|me)?|me)\b[,\.\s]*', '', text, flags=re.IGNORECASE)
                 return text
 
             indonesian_text = clean_rp_action(indonesian_text)
